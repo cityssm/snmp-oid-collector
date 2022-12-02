@@ -7,6 +7,8 @@ It can however be used to poll other devices for other types of counters as well
 
 Download a release or download this repository.
 
+If not already installed, install [Node.js](https://nodejs.org/) version 16 or better.
+
 Install the dependencies.
 
 ```sh
@@ -50,5 +52,4 @@ View the output.
 │  192.168.22.100 | Payroll Printer  │     34474     │             16620             │
 │  192.168.23.100 | HR Printer       │     10908     │             9144              │
 └────────────────────────────────────┴───────────────┴───────────────────────────────┘
-2022-12-02T18:32:53.581Z
 ```
