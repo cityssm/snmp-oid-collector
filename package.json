@@ -1,0 +1,23 @@
+{
+  "name": "snmp-oid-collector",
+  "version": "1.0.0-beta",
+  "type": "module",
+  "description": "",
+  "exports": "./index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cityssm/snmp-oid-collector.git"
+  },
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cityssm/snmp-oid-collector/issues"
+  },
+  "homepage": "https://github.com/cityssm/snmp-oid-collector#readme",
+  "dependencies": {
+    "net-snmp": "^3.8.4"
+  }
+}
