@@ -5,7 +5,8 @@
     "description": "",
     "exports": "./index.js",
     "scripts": {
-        "start": "node ./index.js"
+        "start": "node ./index.js",
+        "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary npm start"
     },
     "repository": {
         "type": "git",
