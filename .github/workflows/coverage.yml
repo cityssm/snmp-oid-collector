@@ -19,19 +19,13 @@ jobs:
       - name: Install Application
         run: |
           npm ci
-          npm install -g mocha c8 cypress@11
+          npm install -g mocha c8
+      - name: Install SNMP
+        run: sudo apt-get install snmp snmpd
       - name: Copy Test Config
-        run: cp ./data/config.testing.js ./data/config.js
-      - name: Initialize Database
-        run: npm run init:cemetery:test
-      - name: Verify Cypress
-        run: cypress verify
-        env:
-          CYPRESS_VERIFY_TIMEOUT: 600000
+        run: cp configTest.js config.js
       - name: Run Coverage Testing
-        run: c8 --reporter=lcov --reporter=text --reporter=text-summary mocha --timeout 10000 --exit
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: c8 --reporter=lcov --reporter=text --reporter=text-summary npm start
       - name: Code Climate
         if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' }}
         run: |
