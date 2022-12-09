@@ -41,7 +41,7 @@ Run the application.
 npm start
 ```
 
-View the output.
+View the output on screen or in output.csv.
 
 ```
 ┌────────────────────────────────────┬───────────────┬───────────────────────────────┐

@@ -3,3 +3,8 @@ export interface Config {
     ips: string[];
     oids: string[];
 }
+export interface Results {
+    [ip: string]: {
+        [oid: string]: string;
+    };
+}

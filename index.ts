@@ -1,10 +1,13 @@
 import config from "./config.js";
 
 import { getOidName } from "./oidNames.js";
+import * as output from "./output.js";
+
+import type * as types from "./types";
 
 import snmp from "net-snmp";
 
-const results = {};
+const results: types.Results = {};
 
 const community = config.communityString || "public";
 
@@ -51,5 +54,7 @@ while (outstandingCount > 0) {
 }
 
 console.log("\n\n");
-console.table(results);
-console.log(new Date());
+output.toConsole(results);
+
+console.log("\n\n");
+output.toCSV(results);
