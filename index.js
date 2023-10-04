@@ -25,7 +25,8 @@ for (const ip of config.ips) {
                     console.error(snmp.varbindError(varbinds[i]));
                 }
                 else {
-                    results[ip][getOidName(varbinds[i].oid)] = varbinds[i].value;
+                    const value = varbinds[i].value;
+                    results[ip][getOidName(varbinds[i].oid)] = typeof value === 'number' ? value : value.toString();
                 }
             }
         }
