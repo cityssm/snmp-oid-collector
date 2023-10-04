@@ -1,6 +1,6 @@
 {
     "name": "snmp-oid-collector",
-    "version": "1.0.0-beta.2",
+    "version": "1.0.0-beta.3",
     "type": "module",
     "description": "",
     "exports": "./index.js",
@@ -19,10 +19,10 @@
     },
     "homepage": "https://github.com/cityssm/snmp-oid-collector#readme",
     "dependencies": {
-        "net-snmp": "^3.9.3",
+        "net-snmp": "^3.9.7",
         "papaparse": "^5.4.1"
     },
     "devDependencies": {
-        "@types/papaparse": "^5.3.7"
+        "@types/papaparse": "^5.3.9"
     }
 }
