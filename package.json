@@ -23,6 +23,6 @@
         "papaparse": "^5.4.1"
     },
     "devDependencies": {
-        "@types/papaparse": "^5.3.9"
+        "@types/papaparse": "^5.3.11"
     }
 }
