@@ -1,39 +1,39 @@
-import papaparse from "papaparse";
-import fs from "node:fs";
+import fs from 'node:fs'
 
-import * as types from "./types";
+import papaparse from 'papaparse'
 
-const resultsToArray = (results: types.Results): {}[] => {
+import type { Results } from './types.js'
 
-    const array = [];
+const resultsToArray = (
+  results: Results
+): Array<Record<string, string>> => {
+  const array: Array<Record<string, string>> = []
 
-    for (const [ip, oids] of Object.entries(results)) {
-
-        const ipResults = {
-            ip: ip
-        };
-
-        for (const [oid, oidValue] of Object.entries(oids)) {
-            ipResults[oid] = oidValue;
-        }
-
-        array.push(ipResults);
+  for (const [ip, oids] of Object.entries(results)) {
+    const ipResults: Record<string, string> = {
+      ip
     }
 
-    return array;
-};
+    for (const [oid, oidValue] of Object.entries(oids)) {
+      ipResults[oid] = oidValue
+    }
 
-export const toConsole = (results: types.Results) => {
-    console.log("Data collected: " + new Date());
-    console.table(results);
-};
+    array.push(ipResults)
+  }
 
-export const toCSV = (results: types.Results) => {
+  return array
+}
 
-    const fileName = "output.csv";
+export function toConsole(results: Results): void {
+  console.log(`Data collected: ${new Date().toLocaleString()}`)
+  console.table(results)
+}
 
-    const csv = papaparse.unparse(resultsToArray(results));
-    fs.writeFileSync(fileName, csv);
+export function toCSV(results: Results): void {
+  const fileName = 'output.csv'
 
-    console.log("Data written to " + fileName);
-};
+  const csv = papaparse.unparse(resultsToArray(results))
+  fs.writeFileSync(fileName, csv)
+
+  console.log(`Data written to ${fileName}`)
+}

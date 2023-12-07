@@ -1,3 +1,3 @@
-import * as types from "./types";
-export declare const toConsole: (results: types.Results) => void;
-export declare const toCSV: (results: types.Results) => void;
+import type { Results } from './types.js';
+export declare function toConsole(results: Results): void;
+export declare function toCSV(results: Results): void;
