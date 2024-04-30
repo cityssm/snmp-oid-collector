@@ -13,7 +13,7 @@ for (const ip of config.ips) {
         const ipSplit = ip.split('|');
         ipAddress = ipSplit[0].trim();
     }
-    console.log('Polling ' + ip + ' ...');
+    console.log(`Polling ${ip} ...`);
     outstandingCount += 1;
     const snmpSession = snmp.createSession(ipAddress, community);
     snmpSession.get(config.oids, (error, varbinds) => {
@@ -36,7 +36,7 @@ for (const ip of config.ips) {
     });
 }
 while (outstandingCount > 0) {
-    console.log('Waiting for ' + outstandingCount + ' servers to respond...');
+    console.log(`Waiting for ${outstandingCount} servers to respond...`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 console.log('\n\n');

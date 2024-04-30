@@ -24,7 +24,7 @@ for (const ip of config.ips) {
     // serverName = ipSplit[1].trim();
   }
 
-  console.log('Polling ' + ip + ' ...')
+  console.log(`Polling ${ip} ...`)
 
   outstandingCount += 1
 
@@ -39,6 +39,7 @@ for (const ip of config.ips) {
           console.error(snmp.varbindError(varbind))
         } else {
           const value = varbind.value
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, security/detect-object-injection
           results[ip][getOidName(varbind.oid)] =
             typeof value === 'number' ? value : value.toString()
         }
@@ -49,8 +50,9 @@ for (const ip of config.ips) {
   })
 }
 
+// eslint-disable-next-line no-unmodified-loop-condition
 while (outstandingCount > 0) {
-  console.log('Waiting for ' + outstandingCount + ' servers to respond...')
+  console.log(`Waiting for ${outstandingCount} servers to respond...`)
   await new Promise((resolve) => setTimeout(resolve, 2000))
 }
 
