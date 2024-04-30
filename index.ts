@@ -38,7 +38,7 @@ for (const ip of config.ips) {
       console.log(error)
     } else {
       for (const varbind of varbinds) {
-        if (snmp.isVarbindError(varbind)) {
+        if (snmp.isVarbindError(varbind) as boolean) {
           console.error(snmp.varbindError(varbind))
         } else {
           const value = varbind.value
