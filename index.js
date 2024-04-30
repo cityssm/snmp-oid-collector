@@ -1,7 +1,7 @@
 import snmp from 'net-snmp';
 import config from './config.js';
 import { getOidName } from './oidNames.js';
-import * as output from './output.js';
+import { outputToCSV, outputToConsole } from './output.js';
 const results = {};
 const community = config.communityString ?? 'public';
 let outstandingCount = 0;
@@ -39,6 +39,6 @@ while (outstandingCount > 0) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 console.log('\n\n');
-output.toConsole(results);
+outputToConsole(results);
 console.log('\n\n');
-output.toCSV(results);
+outputToCSV(results);

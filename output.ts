@@ -4,9 +4,7 @@ import papaparse from 'papaparse'
 
 import type { Results } from './types.js'
 
-const resultsToArray = (
-  results: Results
-): Array<Record<string, string>> => {
+const resultsToArray = (results: Results): Array<Record<string, string>> => {
   const array: Array<Record<string, string>> = []
 
   for (const [ip, oids] of Object.entries(results)) {
@@ -15,6 +13,7 @@ const resultsToArray = (
     }
 
     for (const [oid, oidValue] of Object.entries(oids)) {
+      // eslint-disable-next-line security/detect-object-injection
       ipResults[oid] = oidValue
     }
 
@@ -24,12 +23,20 @@ const resultsToArray = (
   return array
 }
 
-export function toConsole(results: Results): void {
+/**
+ * Outputs the polling results to the console.
+ * @param {Results} results - The polling results.
+ */
+export function outputToConsole(results: Results): void {
   console.log(`Data collected: ${new Date().toLocaleString()}`)
   console.table(results)
 }
 
-export function toCSV(results: Results): void {
+/**
+ * Outputs the polling results to a CSV file.
+ * @param {Results} results - The polling results.
+ */
+export function outputToCSV(results: Results): void {
   const fileName = 'output.csv'
 
   const csv = papaparse.unparse(resultsToArray(results))

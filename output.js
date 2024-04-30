@@ -13,11 +13,11 @@ const resultsToArray = (results) => {
     }
     return array;
 };
-export function toConsole(results) {
+export function outputToConsole(results) {
     console.log(`Data collected: ${new Date().toLocaleString()}`);
     console.table(results);
 }
-export function toCSV(results) {
+export function outputToCSV(results) {
     const fileName = 'output.csv';
     const csv = papaparse.unparse(resultsToArray(results));
     fs.writeFileSync(fileName, csv);

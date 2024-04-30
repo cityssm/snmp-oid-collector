@@ -1,9 +1,12 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable security/detect-object-injection */
+
 import snmp from 'net-snmp'
 
 // eslint-disable-next-line n/no-unpublished-import
 import config from './config.js'
 import { getOidName } from './oidNames.js'
-import * as output from './output.js'
+import { outputToCSV, outputToConsole } from './output.js'
 import type { Results } from './types.js'
 
 const results: Results = {}
@@ -39,7 +42,7 @@ for (const ip of config.ips) {
           console.error(snmp.varbindError(varbind))
         } else {
           const value = varbind.value
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, security/detect-object-injection
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           results[ip][getOidName(varbind.oid)] =
             typeof value === 'number' ? value : value.toString()
         }
@@ -57,7 +60,7 @@ while (outstandingCount > 0) {
 }
 
 console.log('\n\n')
-output.toConsole(results)
+outputToConsole(results)
 
 console.log('\n\n')
-output.toCSV(results)
+outputToCSV(results)
