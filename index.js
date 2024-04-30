@@ -1,10 +1,9 @@
-var _a;
 import snmp from 'net-snmp';
 import config from './config.js';
 import { getOidName } from './oidNames.js';
 import * as output from './output.js';
 const results = {};
-const community = (_a = config.communityString) !== null && _a !== void 0 ? _a : 'public';
+const community = config.communityString ?? 'public';
 let outstandingCount = 0;
 for (const ip of config.ips) {
     results[ip] = {};
