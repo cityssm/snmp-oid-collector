@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/papaparse": "^5.3.14",
-    "eslint-config-cityssm": "^2.0.1"
+    "eslint-config-cityssm": "^3.2.0"
   },
   "private": true
 }
