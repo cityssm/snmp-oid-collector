@@ -1,9 +1,8 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
 /* eslint-disable security/detect-object-injection */
 
 import snmp from 'net-snmp'
 
-// eslint-disable-next-line n/no-unpublished-import
 import config from './config.js'
 import { getOidName } from './oidNames.js'
 import { outputToCSV, outputToConsole } from './output.js'
@@ -42,7 +41,6 @@ for (const ip of config.ips) {
           console.error(snmp.varbindError(varbind))
         } else {
           const value = varbind.value
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           results[ip][getOidName(varbind.oid)] =
             typeof value === 'number' ? value : value.toString()
         }
@@ -53,7 +51,7 @@ for (const ip of config.ips) {
   })
 }
 
-// eslint-disable-next-line no-unmodified-loop-condition
+// eslint-disable-next-line sonarjs/no-infinite-loop, no-unmodified-loop-condition
 while (outstandingCount > 0) {
   console.log(`Waiting for ${outstandingCount} servers to respond...`)
   await new Promise((resolve) => setTimeout(resolve, 2000))

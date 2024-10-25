@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import papaparse from 'papaparse';
-const resultsToArray = (results) => {
+function resultsToArray(results) {
     const array = [];
     for (const [ip, oids] of Object.entries(results)) {
         const ipResults = {
@@ -12,7 +12,7 @@ const resultsToArray = (results) => {
         array.push(ipResults);
     }
     return array;
-};
+}
 export function outputToConsole(results) {
     console.log(`Data collected: ${new Date().toLocaleString()}`);
     console.table(results);

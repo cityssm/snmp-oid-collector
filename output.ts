@@ -4,7 +4,7 @@ import papaparse from 'papaparse'
 
 import type { Results } from './types.js'
 
-const resultsToArray = (results: Results): Array<Record<string, string>> => {
+function resultsToArray(results: Results): Array<Record<string, string>> {
   const array: Array<Record<string, string>> = []
 
   for (const [ip, oids] of Object.entries(results)) {

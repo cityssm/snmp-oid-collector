@@ -19,12 +19,13 @@
   },
   "homepage": "https://github.com/cityssm/snmp-oid-collector#readme",
   "dependencies": {
-    "net-snmp": "^3.11.2",
+    "net-snmp": "^3.15.1",
     "papaparse": "^5.4.1"
   },
   "devDependencies": {
-    "@types/papaparse": "^5.3.14",
-    "eslint-config-cityssm": "^2.0.1"
+    "@types/papaparse": "^5.3.15",
+    "eslint-config-cityssm": "^13.2.0",
+    "prettier-config-cityssm": "^1.0.0"
   },
   "private": true
 }
