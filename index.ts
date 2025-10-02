@@ -28,32 +28,36 @@ for (const ip of config.ips) {
 
   console.log(`Polling ${ip} ...`)
 
-  outstandingCount += 1
+  outstandingCount += config.oids.length
 
   const snmpSession = snmp.createSession(ipAddress, community)
 
-  snmpSession.get(config.oids, (error, varbinds) => {
-    if (error) {
-      console.log(error)
-    } else {
-      for (const varbind of varbinds) {
-        if (snmp.isVarbindError(varbind) as boolean) {
-          console.error(snmp.varbindError(varbind))
-        } else {
-          const value = varbind.value
-          results[ip][getOidName(varbind.oid)] =
-            typeof value === 'number' ? value : value.toString()
+  for (const oid of config.oids) {
+    // eslint-disable-next-line @typescript-eslint/no-loop-func
+    snmpSession.get([oid], (error, varbinds) => {
+      if (error) {
+        console.log(error)
+      } else {
+        for (const varbind of varbinds ?? []) {
+          if (snmp.isVarbindError(varbind) as boolean) {
+            console.error(snmp.varbindError(varbind))
+          } else {
+            const { value } = varbind
+            
+            results[ip][getOidName(varbind.oid)] =
+              typeof value === 'number' ? value : value.toString()
+          }
         }
       }
-    }
 
-    outstandingCount -= 1
-  })
+      outstandingCount -= 1
+    })
+  }
 }
 
 // eslint-disable-next-line sonarjs/no-infinite-loop, no-unmodified-loop-condition
 while (outstandingCount > 0) {
-  console.log(`Waiting for ${outstandingCount} servers to respond...`)
+  console.log(`Waiting for ${outstandingCount} poll(s) to respond...`)
   await new Promise((resolve) => setTimeout(resolve, 2000))
 }
 
