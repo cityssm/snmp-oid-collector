@@ -2,7 +2,6 @@
 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/cityssm/snmp-oid-collector?include_prereleases)](https://github.com/cityssm/snmp-oid-collector/releases)
 [![DeepSource](https://app.deepsource.com/gh/cityssm/snmp-oid-collector.svg/?label=active+issues&show_trend=true&token=-bJZ4DPfA9kBFuPpv2iM7z22)](https://app.deepsource.com/gh/cityssm/snmp-oid-collector/)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/cityssm/snmp-oid-collector)](https://codeclimate.com/github/cityssm/snmp-oid-collector)
 [![codecov](https://codecov.io/gh/cityssm/snmp-oid-collector/graph/badge.svg?token=0FYGX3DMUK)](https://codecov.io/gh/cityssm/snmp-oid-collector)
 
 The main purpose of this project is to quickly collect counters from printers at City facilities.
