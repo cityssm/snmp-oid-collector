@@ -43,7 +43,7 @@ for (const ip of config.ips) {
             console.error(snmp.varbindError(varbind))
           } else {
             const { value } = varbind
-            
+
             results[ip][getOidName(varbind.oid)] =
               typeof value === 'number' ? value : value.toString()
           }
