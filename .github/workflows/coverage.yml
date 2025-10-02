@@ -8,7 +8,6 @@ jobs:
   Coverage:
     runs-on: ubuntu-latest
     env:
-      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
     steps:
@@ -21,7 +20,7 @@ jobs:
       - name: Install Application
         run: |
           npm ci
-          npm install -g mocha c8
+          npm install -g c8
 
       - name: Install SNMP
         run: sudo apt-get install snmp snmpd
@@ -31,14 +30,6 @@ jobs:
 
       - name: Run Coverage Testing
         run: c8 --reporter=lcov --reporter=text --reporter=text-summary npm start
-
-      - name: Code Climate
-        if: ${{ github.event_name != 'pull_request' && env.CC_TEST_REPORTER_ID != '' }}
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./codeclimate-test-reporter
-          chmod +x codeclimate-test-reporter
-          ./codeclimate-test-reporter before-build
-          ./codeclimate-test-reporter after-build -t lcov --exit-code $?
 
       - name: Codecov
         if: ${{ github.event_name != 'pull_request' && env.CODECOV_TOKEN != '' }}
