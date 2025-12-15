@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/net-snmp": "^3.23.0",
-    "@types/papaparse": "^5.3.16",
+    "@types/papaparse": "^5.5.2",
     "eslint-config-cityssm": "^30.0.0",
     "prettier-config-cityssm": "^1.0.0"
   },
