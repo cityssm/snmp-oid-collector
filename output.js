@@ -29,6 +29,13 @@ export function outputToMarkdown(results) {
     const fileName = 'output.md';
     const markdown = tablemark(resultsToArray(results));
     fs.writeFileSync(fileName, markdown);
-    clipboard.writeSync(markdown);
-    console.log(`Data written to ${fileName}, and copied to clipboard.`);
+    let copiedToClipboard = false;
+    try {
+        clipboard.writeSync(markdown);
+        copiedToClipboard = true;
+    }
+    catch (error) {
+        console.error('Error copying to clipboard:', error);
+    }
+    console.log(`Data written to ${fileName}${copiedToClipboard ? ', and copied to clipboard.' : ''}`);
 }

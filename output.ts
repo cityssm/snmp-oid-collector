@@ -60,7 +60,15 @@ export function outputToMarkdown(results: Results): void {
 
   fs.writeFileSync(fileName, markdown)
 
-  clipboard.writeSync(markdown)
+  let copiedToClipboard = false
+  try {
+    clipboard.writeSync(markdown)
+    copiedToClipboard = true
+  } catch (error) {
+    console.error('Error copying to clipboard:', error)
+  }
 
-  console.log(`Data written to ${fileName}, and copied to clipboard.`)
+  console.log(
+    `Data written to ${fileName}${copiedToClipboard ? ', and copied to clipboard.' : ''}`
+  )
 }

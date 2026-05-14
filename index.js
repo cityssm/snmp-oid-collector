@@ -44,5 +44,4 @@ console.log('\n\n');
 outputToConsole(results);
 console.log('\n\n');
 outputToCSV(results);
-console.log('\n\n');
 outputToMarkdown(results);
