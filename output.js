@@ -1,5 +1,7 @@
 import fs from 'node:fs';
+import clipboard from 'clipboardy';
 import papaparse from 'papaparse';
+import { tablemark } from 'tablemark';
 function resultsToArray(results) {
     const array = [];
     for (const [ip, oids] of Object.entries(results)) {
@@ -22,4 +24,11 @@ export function outputToCSV(results) {
     const csv = papaparse.unparse(resultsToArray(results));
     fs.writeFileSync(fileName, csv);
     console.log(`Data written to ${fileName}`);
+}
+export function outputToMarkdown(results) {
+    const fileName = 'output.md';
+    const markdown = tablemark(resultsToArray(results));
+    fs.writeFileSync(fileName, markdown);
+    clipboard.writeSync(markdown);
+    console.log(`Data written to ${fileName}, and copied to clipboard.`);
 }

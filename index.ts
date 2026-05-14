@@ -1,11 +1,11 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable no-console */
 /* eslint-disable security/detect-object-injection */
 
 import snmp from 'net-snmp'
 
 import config from './config.js'
 import { getOidName } from './oidNames.js'
-import { outputToCSV, outputToConsole } from './output.js'
+import { outputToConsole, outputToCSV, outputToMarkdown } from './output.js'
 import type { Results } from './types.js'
 
 const results: Results = {}
@@ -66,3 +66,6 @@ outputToConsole(results)
 
 console.log('\n\n')
 outputToCSV(results)
+
+console.log('\n\n')
+outputToMarkdown(results)

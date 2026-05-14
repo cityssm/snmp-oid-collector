@@ -1,7 +1,9 @@
-import cityssmConfig, { cspellWords } from 'eslint-config-cityssm'
-import tseslint from 'typescript-eslint'
+import cityssmConfig, {
+  defineConfig
+} from 'eslint-config-cityssm/eslint.packageConfig.js'
+import { cspellWords } from 'eslint-config-cityssm/exports.js'
 
-export const config = tseslint.config(...cityssmConfig, {
+export const config = defineConfig(...cityssmConfig, {
   rules: {
     '@cspell/spellchecker': [
       'warn',

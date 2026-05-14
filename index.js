@@ -1,7 +1,7 @@
 import snmp from 'net-snmp';
 import config from './config.js';
 import { getOidName } from './oidNames.js';
-import { outputToCSV, outputToConsole } from './output.js';
+import { outputToConsole, outputToCSV, outputToMarkdown } from './output.js';
 const results = {};
 const community = config.communityString ?? 'public';
 let outstandingCount = 0;
@@ -44,3 +44,5 @@ console.log('\n\n');
 outputToConsole(results);
 console.log('\n\n');
 outputToCSV(results);
+console.log('\n\n');
+outputToMarkdown(results);

@@ -1,6 +1,10 @@
+/* eslint-disable no-console */
+
 import fs from 'node:fs'
 
+import clipboard from 'clipboardy'
 import papaparse from 'papaparse'
+import { tablemark } from 'tablemark'
 
 import type { Results } from './types.js'
 
@@ -25,7 +29,7 @@ function resultsToArray(results: Results): Array<Record<string, string>> {
 
 /**
  * Outputs the polling results to the console.
- * @param {Results} results - The polling results.
+ * @param results - The polling results.
  */
 export function outputToConsole(results: Results): void {
   console.log(`Data collected: ${new Date().toLocaleString()}`)
@@ -34,7 +38,7 @@ export function outputToConsole(results: Results): void {
 
 /**
  * Outputs the polling results to a CSV file.
- * @param {Results} results - The polling results.
+ * @param results - The polling results.
  */
 export function outputToCSV(results: Results): void {
   const fileName = 'output.csv'
@@ -43,4 +47,20 @@ export function outputToCSV(results: Results): void {
   fs.writeFileSync(fileName, csv)
 
   console.log(`Data written to ${fileName}`)
+}
+
+/**
+ * Outputs the polling results to a Markdown file.
+ * @param results - The polling results.
+ */
+export function outputToMarkdown(results: Results): void {
+  const fileName = 'output.md'
+
+  const markdown = tablemark(resultsToArray(results))
+
+  fs.writeFileSync(fileName, markdown)
+
+  clipboard.writeSync(markdown)
+
+  console.log(`Data written to ${fileName}, and copied to clipboard.`)
 }
