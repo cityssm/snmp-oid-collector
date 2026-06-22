@@ -21,7 +21,7 @@
   "dependencies": {
     "clipboardy": "^5.3.1",
     "net-snmp": "^3.26.3",
-    "papaparse": "^5.5.3",
+    "papaparse": "^5.5.4",
     "tablemark": "^4.1.0"
   },
   "devDependencies": {
