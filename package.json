@@ -28,7 +28,7 @@
     "@types/net-snmp": "^3.23.0",
     "@types/papaparse": "^5.5.2",
     "eslint-config-cityssm": "^40.1.0",
-    "prettier-config-cityssm": "^2.1.2"
+    "prettier-config-cityssm": "^2.1.3"
   },
   "private": true
 }
