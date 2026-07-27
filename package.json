@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/cityssm/snmp-oid-collector#readme",
   "dependencies": {
-    "clipboardy": "^5.3.1",
+    "clipboardy": "^5.3.2",
     "net-snmp": "^3.26.3",
     "papaparse": "^5.5.3",
     "tablemark": "^4.1.0"
